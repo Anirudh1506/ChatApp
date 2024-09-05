@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./UserModel.js";
 
 const user=mongoose.Schema({
     Name:{
@@ -9,7 +8,24 @@ const user=mongoose.Schema({
     Email:{
         type:String,
         required:['true']
-    }
+    },
+    Username:{
+        type:String,
+        required:['true']
+    },
+    Password:{
+        type:String,
+        required:['true']
+    },
+    Role:{
+        type:String,
+        required:['true']
+    },
+    Connections:[{
+        type:mongoose.Schema.ObjectId,
+        ref:"User"
+    }]
 });
 
-export default mongoose.model("User",user);
+const User=mongoose.model("User",user)
+export default User;
